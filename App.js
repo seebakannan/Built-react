@@ -11,18 +11,28 @@ class App extends React.Component {
         }
     }
 
+
     addHandle = (event) => {
         event.preventDefault();
-        let listCopy = this.state.list.slice();
-        const { firstName, age } = event.target;
-        listCopy.push({
-            id: new Date().getTime().toString(),
-            name: firstName.value,
-            age: age.value
-        });
-        this.setState({
-            list: listCopy
-        })
+        if (event.target.firstName.value == "" && event.target.age.value == "") {
+            this.setState({
+                list: this.state.list
+            })
+        }
+        else {
+            let listCopy = this.state.list.slice();
+            const { firstName, age } = event.target;
+
+            listCopy.push({
+                id: new Date().getTime().toString(),
+                name: firstName.value,
+                age: age.value
+            });
+
+            this.setState({
+                list: listCopy
+            })
+        }
     }
 
     render() {
