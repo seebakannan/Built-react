@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Form from "./formcomponents/Form";
 import Listcontainer from "./formcomponents/Listcontainer";
+import Reset from "./formcomponents/Reset.js";
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -31,6 +32,13 @@ class App extends React.Component {
         else {
             alert('Please fill the Details')
         }
+    };
+
+    handleReset = (event) => {
+        event.preventDefault();
+        this.setState({
+            list: []
+        })
     }
 
     render() {
@@ -39,7 +47,7 @@ class App extends React.Component {
                 <br></br>
                 <Form onSubmit={this.addHandle} />
                 <Listcontainer list={this.state.list} />
-
+                <Reset onClick={this.handleReset} />
             </div>
         )
     }
