@@ -14,12 +14,7 @@ class App extends React.Component {
 
     addHandle = (event) => {
         event.preventDefault();
-        if (event.target.firstName.value == "" && event.target.age.value == "") {
-            this.setState({
-                list: this.state.list
-            })
-        }
-        else {
+        if (event.target.firstName.value && event.target.age.value) {
             let listCopy = this.state.list.slice();
             const { firstName, age } = event.target;
 
@@ -32,6 +27,9 @@ class App extends React.Component {
             this.setState({
                 list: listCopy
             })
+        }
+        else {
+            alert('Please fill the Details')
         }
     }
 
